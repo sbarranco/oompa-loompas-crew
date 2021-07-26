@@ -1,45 +1,43 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback, useRef } from 'react';
 
 // Utils
-import axios from 'axios';
+// import axios from 'axios';
 import { MainAppContext } from './utils/MainAppContext';
+import useFetch from './hook/useFetch'
+
 
 // Components
 import SearchBar from './components/Search';
-import Header from './components/Header'
-import CrewList from './components/CrewList'
+import Header from './components/Header';
+import CrewList from './components/CrewList';
 
 // Styles
 import './App.css';
 
 function App() {
   let { stateMainApp, dispatchMainApp } = useContext(MainAppContext);
-  let { crewMembers } = stateMainApp;
+  let { crewMembers, page } = stateMainApp;
 
-  const [isLoading, setIsLoading] = useState(false)
-  const url = `https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas?pa
-  ge=1`
+  const { loading, error } = useFetch();
+  const loader = useRef(null);
+
+  const handleObserver = useCallback((entries) => {
+    const target = entries[0];
+    if (target.isIntersecting) {
+      dispatchMainApp({ type: "SET_PAGE_NUM", payload: ++page });;
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    getDataElements()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const getDataElements = async () => {
-    setIsLoading(true)
-    try {
-      const response = await axios.get(url)
-      if (response.status === 200) {
-        let data = response.data.results
-        dispatchMainApp({ type: "SET_CREW_MEMBERS", payload: data });
-      } else {
-        // ERROR MESSAGE
-      }
-    } catch (e) {
- // ERROR MESSAGE
-    }
-    setIsLoading(false)
-  }
+    const option = {
+      root: null,
+      rootMargin: "20px",
+      threshold: 0
+    };
+    const observer = new IntersectionObserver(handleObserver, option);
+    if (loader.current) observer.observe(loader.current);
+  }, [handleObserver]);
 
   return (
     <div className="App">
@@ -47,8 +45,10 @@ function App() {
       <SearchBar/>
       <h1 className="title">Find your Oompa Loompa</h1>
       <h3 className="subtitle">There are more than 100k</h3>
-      <div>{(crewMembers.length === 0 && !isLoading) || (crewMembers.length === 0) ? 'No Results Found' : <CrewList/>}</div>
-
+      <div>{(crewMembers.length === 0) ? 'No Results Found' : <CrewList />}</div>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error!</p>}
+      <div ref={loader} />
     </div>
   );
 }

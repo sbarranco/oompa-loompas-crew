@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    flex: nowrap;
+    padding: 20px;
+    background-color: #dfdcdc;
+    text-align: left;
+    font-weight: bold;
+    color: black;
+}
+
+.logo {
+    padding-left: 40px;
+    padding-right: 20px;
+    max-width: 100%;
+    width: 30px;
+    
+}

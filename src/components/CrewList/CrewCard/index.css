@@ -1,0 +1,25 @@
+.card {
+    flex: 0 0 200px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.card-image {
+    max-width: 100%;
+}
+
+.card-text {
+    padding-left: 5px;
+}
+
+.card-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.card-info {
+    font-size: 12px;
+    color: gray;
+}

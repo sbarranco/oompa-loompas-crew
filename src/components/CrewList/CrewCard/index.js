@@ -1,21 +1,16 @@
 import React from 'react';
+import './index.css';
 
 function CrewCard({ item }) {
 
   return (
-    <div className="flip-card">
-      <div className="flip-card-inner">
-        <div className="flip-card-front">
-          <img src={item.image} alt="Avatar" className="profile-image"/>
-          <div className="name">{item.name}</div>
-        </div>
-        <div className="flip-card-back">
-          <div className="back-content">
-            <div>{item.first_name} {item.last_name}</div>
-            <div>{item.gender === 'F' ? 'Woman' : 'Man'}</div>
-            <div>{item.profession}</div>
-           
-          </div>
+    <div className="card">
+      <img className="card-image" src={item.image} alt="Avatar" />
+      <div className="card-text">
+        <h3 className="card-name">{item.first_name} {item.last_name}</h3>
+        <div className="card-info">
+          <p>{item.gender === 'F' ? 'Woman' : 'Man'}</p>
+          <p>{item.profession}</p>
         </div>
       </div>
     </div>

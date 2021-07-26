@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { MainAppContext } from '../../utils/MainAppContext';
 import CrewCard from './CrewCard';
+import './index.css';
 
 function CrewList() {
     let { stateMainApp } = useContext(MainAppContext);

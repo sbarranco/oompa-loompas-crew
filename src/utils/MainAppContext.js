@@ -5,6 +5,7 @@ export const initValueMainApp = {
     searchList: [],
     memberDetail: null,
     searchText: "",
+    page: 1,
 };
 
 const MainAppContext = React.createContext(initValueMainApp);
@@ -21,6 +22,8 @@ let reducer = (state, action) => {
             return {...state, ...{searchText: action.payload}};
         case "SET_SEARCH_LIST":
             return {...state, ...{searchList: action.payload}};
+        case "SET_PAGE_NUM":
+            return {...state, ...{page: action.payload}};    
         default:
             return {...state};
     }

@@ -1,6 +1,12 @@
 import React, {useContext} from 'react';
-import { MainAppContext } from '../../utils/MainAppContext';
+
+// Context
+import { MainAppContext } from '../../utils/Context/MainAppContext';
+
+//Components
 import CrewCard from './CrewCard';
+
+// Styles
 import './index.css';
 
 function CrewList() {

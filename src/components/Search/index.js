@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { MainAppContext } from '../../utils/MainAppContext';
+import { MainAppContext } from '../../utils/Context/MainAppContext';
 import './index.css';
 
 function SearchBar() {

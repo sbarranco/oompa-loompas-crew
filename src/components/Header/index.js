@@ -1,4 +1,9 @@
 import React from 'react';
+
+// React router
+import { Link } from 'react-router-dom';
+
+// Styles
 import './index.css'
 
 function Header() {
@@ -6,7 +11,7 @@ function Header() {
 
     return (
         <div className='header'>
-            <img className="logo" src={loompaLogo} alt="Logo" />
+        <Link to='/'><img className="logo" src={loompaLogo} alt="Logo" /></Link>
             <header>Oompa Loompa's crew</header>
         </div>
     );

@@ -1,16 +1,16 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 
 // Libraries
-import {NotificationManager} from 'react-notifications';
+import { NotificationManager } from "react-notifications";
 import axios from "axios";
 
 // Context
 import { MainAppContext } from "../Context/MainAppContext";
 
 function useFetch() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const date =  new Date().toDateString();
+  const date = new Date().toDateString();
 
   let { stateMainApp, dispatchMainApp } = useContext(MainAppContext);
   let { crewMembers, page } = stateMainApp;
@@ -25,25 +25,34 @@ function useFetch() {
       if (res.status === 200) {
         let data = [...crewMembers, ...res.data.results];
         dispatchMainApp({ type: "SET_CREW_MEMBERS", payload: data });
-        localStorage.setItem('CREW_MEMBERS', data);
+        localStorage.setItem("CREW_MEMBERS", JSON.stringify(data));
+        localStorage.setItem("STORAGE_DATE", date);
       }
     } catch (err) {
       setError(err);
-      NotificationManager.error('Error', err.message, 5000);
+      NotificationManager.error("Error", err.message, 5000);
     }
     setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   useEffect(() => {
-    console.log('date', date)
-    if (localStorage.getItem('CREW_MEMBERS')) {
-
-    } else {      
+     if (confirmSendQuery()) {
+      dispatchMainApp({
+        type: "SET_CREW_MEMBERS",
+        payload: JSON.parse(localStorage.getItem("CREW_MEMBERS")),
+      });
+    } else {
       localStorage.clear();
       sendQuery();
-    }
+    } 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sendQuery, page]);
+
+  const confirmSendQuery = () => {
+    const date = localStorage.getItem("STORAGE_DATE");
+    return date === new Date().toDateString();
+  };
 
   return { loading, error };
 }

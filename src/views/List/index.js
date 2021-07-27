@@ -19,7 +19,7 @@ function ListView() {
   let { stateMainApp, dispatchMainApp } = useContext(MainAppContext);
   let { crewMembers, page } = stateMainApp;
 
-  const { loading, error } = useFetch();
+  const { loading } = useFetch();
   const loader = useRef(null);
 
   const handleObserver = useCallback((entries) => {

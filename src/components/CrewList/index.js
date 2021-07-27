@@ -1,27 +1,26 @@
-import React, {useContext} from 'react';
+import React, { useContext } from "react";
 
 // Context
-import { MainAppContext } from '../../utils/Context/MainAppContext';
+import { MainAppContext } from "../../Context/MainAppContext";
 
 //Components
-import CrewCard from './CrewCard';
+import CrewCard from "./CrewCard";
 
 // Styles
-import './index.css';
+import "./index.css";
 
 function CrewList() {
-    let { stateMainApp } = useContext(MainAppContext);
-    let { searchList } = stateMainApp;
+  let { stateMainApp } = useContext(MainAppContext);
+  let { searchList } = stateMainApp;
 
-    return (
-        <div className='crewList'>
-            {!!searchList && searchList.map((item, index) => {
-                return (
-                    <CrewCard item={item} key={index}/>
-                )
-            }) }
-        </div>
-    );
+  return (
+    <div className="crewList">
+      {!!searchList &&
+        searchList.map((item, index) => {
+          return <CrewCard item={item} key={index} />;
+        })}
+    </div>
+  );
 }
 
 export default CrewList;

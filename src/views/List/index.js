@@ -10,10 +10,8 @@ import SearchBar from "../../components/SearchBar";
 import Header from "../../components/Header";
 import CrewList from "../../components/CrewList";
 
-// Libraries
-import {NotificationContainer} from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
-
+// Styles
+import "./index.css";
 
 function ListView() {
   let { stateMainApp, dispatchMainApp } = useContext(MainAppContext);
@@ -44,12 +42,13 @@ function ListView() {
     <div>
       <Header />
       <SearchBar />
-      <h1 className="title">Find your Oompa Loompa</h1>
-      <h3 className="subtitle">There are more than 100k</h3>
+      <div className="title">
+        <h1>Find your Oompa Loompa</h1>
+        <h3>There are more than 100k</h3>
+      </div>
       <Loader isLoading={loading}>
         {crewMembers.length === 0 ? "No Results Found" : <CrewList />}
       </Loader>
-      <NotificationContainer/>
       <div ref={loader} />
     </div>
   );

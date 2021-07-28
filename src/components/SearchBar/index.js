@@ -1,5 +1,9 @@
 import React, { useContext } from "react";
+
+// Context
 import { MainAppContext } from "../../Context/MainAppContext";
+
+// Styles
 import "./index.css";
 
 function SearchBar() {
@@ -9,7 +13,7 @@ function SearchBar() {
   const searchIcon = `https://s3.eu-central-1.amazonaws.com/napptilus/level-test/imgs/ic_search.png`;
 
   const onSearch = () => {
-    let newData = crewMembers.filter((item) => {
+    let newData = crewMembers.filter = ((item) => {
       item.profession.toLowerCase().includes(searchText.toLowerCase()) ||
         item.first_name.toLowerCase().includes(searchText.toLowerCase()) ||
         item.last_name.toLowerCase().includes(searchText.toLowerCase());
@@ -18,8 +22,10 @@ function SearchBar() {
   };
 
   const onChangeSearchInput = (value) => {
-    let newData = crewMembers.filter((item) =>
-      JSON.stringify(item).toLowerCase().includes(value.toLowerCase())
+    let newData = crewMembers.filter((item) => {
+      const data = JSON.stringify(item).toLowerCase().includes(value.toLowerCase())
+      return data;
+    }
     );
     dispatchMainApp({ type: "SET_SEARCH_LIST", payload: newData });
     dispatchMainApp({ type: "SET_SEARCH_TEXT", payload: value });
@@ -29,7 +35,7 @@ function SearchBar() {
 
   return (
     <div>
-      <form>
+      <form className="search-form">
         <input
           className="search-input"
           type="text"

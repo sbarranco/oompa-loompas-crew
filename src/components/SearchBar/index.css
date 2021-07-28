@@ -1,12 +1,29 @@
-.search__input{
-    float:right;
+.search-form { 
+    text-align: right;
+    margin: 20px 140px 20px 0;
+}
 
+.search-input{
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-radius: 15px 0 0 15px;
+    border-right: none;
+    background: transparent;
 }
 
 .search-btn {
+    padding: 10px;
+    background: transparent;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-radius: 0 15px 15px 0;
+    border-left: none; 
+    cursor: pointer;
     
 }
 
 .search-icon {
-
+width: 30%;
 }

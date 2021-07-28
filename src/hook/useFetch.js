@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 
 // Libraries
-import { NotificationManager } from "react-notifications";
 import axios from "axios";
 
 // Context
@@ -30,7 +29,7 @@ function useFetch() {
       }
     } catch (err) {
       setError(err);
-      NotificationManager.error("Error", err.message, 5000);
+      console.log(err)
     }
     setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps

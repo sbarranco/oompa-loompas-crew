@@ -1,9 +1,12 @@
 .card {
-    flex: 0 0 200px;
+    flex: 0 0 400px;
     margin: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
     text-align: left;
+}
+
+.card:hover{
+    box-shadow: 0px 0px 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
 }
 
 .card-image {
@@ -14,12 +17,26 @@
     padding-left: 5px;
 }
 
-.card-name {
-    font-weight: bold;
-    font-size: 16px;
+.card-text h3:hover {
+    color: mediumseagreen;
 }
 
-.card-info {
-    font-size: 12px;
-    color: gray;
+.card-text h3 {    
+    font-size: 16px;
+    color:black;
+}
+
+.card-info p {    
+    margin: 0;
+    font-size: smaller;    
+    color: grey;
+}
+
+.card-info p:last-child{
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+a:link{
+    text-decoration: none!important;
 }

@@ -1,0 +1,31 @@
+.detail-container {
+    display: flex;
+    flex: nowrap;
+    padding: 5% 10%;
+}
+
+.detail-image {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    padding-right: 20px;
+}
+
+.detail-text {
+    text-align: left;
+}
+
+.detail-text h3 {
+    margin: 0;
+}
+
+.detail-info p {
+    margin: 0;
+    font-size: smaller;
+    color: grey;
+}
+
+.detail-info p:last-child {
+    margin-bottom: 15px;
+    font-style: italic;
+}

@@ -7,12 +7,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ListView from "./views/List";
 import DetailsView from "./views/Details";
 
-// Styles
-import "./App.css";
-
 function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
         <Switch>
           <Route exact path="/" component={ListView} />

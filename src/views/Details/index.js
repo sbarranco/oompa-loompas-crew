@@ -2,11 +2,6 @@ import React, { useEffect, useContext, useState } from "react";
 
 // Libraries
 import axios from "axios";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
-import "react-notifications/lib/notifications.css";
 
 // Components
 import Header from "../../components/Header";
@@ -34,6 +29,7 @@ function DetailsView({ match }) {
         payload: prevDetail,
       });
     } else {
+      
       getMemberDetails();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,11 +44,9 @@ function DetailsView({ match }) {
         dispatchMainApp({ type: "SET_MEMBER_DETAIL", payload: response.data });
         localStorage.setItem("MEMBER_DETAIL", JSON.stringify(response.data));
         localStorage.setItem("ID_DETAIL", JSON.stringify(id));
-      } else {
-        NotificationManager.error("Something went wrong!", "Error", 5000);
-      }
-    } catch (error) {
-      NotificationManager.error("Error", error.message, 5000);
+      } 
+    } catch (err) {
+      console.log(err)
     }
     setLoading(false);
   };
@@ -61,7 +55,6 @@ function DetailsView({ match }) {
     <div>
       <Header />
       <Loader isLoading={loading}>{memberDetail && <CrewDetails />}</Loader>
-      <NotificationContainer />
     </div>
   );
 }

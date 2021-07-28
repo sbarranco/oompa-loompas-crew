@@ -6,12 +6,10 @@ import axios from "axios";
 // Components
 import Header from "../../components/Header";
 import CrewDetails from "../../components/CrewDetails";
+import Loader from "../../components/Loader";
 
 // Context
 import { MainAppContext } from "../../Context/MainAppContext";
-
-// Utils
-import Loader from "../../utils/Loader";
 
 function DetailsView({ match }) {
   let { stateMainApp, dispatchMainApp } = useContext(MainAppContext);

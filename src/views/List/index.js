@@ -3,12 +3,12 @@ import React, { useEffect, useContext, useCallback, useRef } from "react";
 // Utils
 import { MainAppContext } from "../../Context/MainAppContext";
 import useFetch from "../../hook/useFetch";
-import Loader from "../../utils/Loader";
 
 // Components
 import SearchBar from "../../components/SearchBar";
 import Header from "../../components/Header";
 import CrewList from "../../components/CrewList";
+import Loader from "../../components/Loader";
 
 // Styles
 import "./index.css";

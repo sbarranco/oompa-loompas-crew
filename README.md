@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Oompa Lompa's Crew
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a requirement to develop a web application to manage the Oompa Loompa 's crew of Willy Wonka's chocolate factory.
+This project has been developed for a Frontend technical assignment.
 
-## Available Scripts
+## Screenshoot
 
-In the project directory, you can run:
+![home](https://user-images.githubusercontent.com/39586833/127396822-35078e61-e4b9-4e07-8670-3d9a2d4e46a6.png)
 
-### `npm start`
+![detail](https://user-images.githubusercontent.com/39586833/127396913-129905c1-3cac-452e-9c98-1dc4ed0bc41a.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Functional and Technical Description
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+As soon as we get into the **List view**, it is showing a list of Oompaa Loompas.
+if more than one day has passed since the last time it was requested, the **List** is fetching with Axios, the list of the members are storage in the context app in order to access to this data globally and also, in the local storage for further views. If not, the app get the list from the localStorage. The list have an **endless scroll** with an IntersectionObserver that allows us to detect the intersection ratio with the scroll down and execute the callback function hook **useFetch** to get more data. Also, the view has a search bar that allows the user to find a crew member with an immediate effect using the 'onChange'input event.
 
-### `npm test`
+When an Oompa Loompa is clicked, the router navigates to the **Details view**. As I did in the List view, with the id provided in the router parameter, details are fetching with Axios and storage in the context and also in the localStorage. Some member details are showing in this view like name, gender or profession, but I had to use the **dangerouslySetInnerHTML** prop to replace the string HTML tags and sanitize data.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Finally, if user cliks in the icon header, the website go back to the main view. 
 
-### `npm run build`
+## Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The front-end is created using ReactJS with Hooks, project instaled with "create-react-app". Styled with SCSS.
+Also, the following JS third party libraries are installed in the project, as:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - "react-spinners" and "react-loading-overlay" : Loader style and animations
+  - "react-router-dom": Router
+  - "axios": Fetch data
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Components and Pages
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+App:
+- Components:
+    - CrewDetails
+    - CrewList:
+        - CrewCard
+    - Header
+    - Loader
+    - SearchBar
+- Context
+- hook (useFetch)
+- views:
+    - List
+    - Details
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Author
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Silvia Barranco](https://github.com/sbarranco)
